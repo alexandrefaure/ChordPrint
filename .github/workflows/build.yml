@@ -21,7 +21,7 @@ jobs:
       run: nuget restore ChordPrint.sln
  
     - name: Build and Publish Web App
-      run: msbuild ChordPrint.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+      run: msbuild ChordPrint.sln /p:Configuration=Release /p:DeployOnBuild=true /t:publish /p:PublishDir="publish"
  
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
