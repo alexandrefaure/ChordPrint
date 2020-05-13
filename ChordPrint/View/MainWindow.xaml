@@ -1,0 +1,165 @@
+﻿<Controls:MetroWindow x:Class="ChordPrint.View.MainWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                      GlowBrush="{DynamicResource AccentBaseColorBrush}"
+                      BorderThickness="1"
+                      mc:Ignorable="d"
+                      Title="ChordPro2Pdf" Height="450" Width="1200">
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <ToggleButton Content="Paramètres" Name="SettingsHeaderButton"
+                          Cursor="Hand" />
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+    <Controls:MetroWindow.Flyouts>
+        <Controls:FlyoutsControl>
+            <Controls:Flyout x:Name="settingsFlyout" Header="Paramètres" Theme="Accent" Position="Left" Width="400"
+                             IsOpen="False" BorderBrush="Black" BorderThickness="3,0,3,3">
+                <StackPanel>
+                    <TextBlock FontSize="24">Hello World</TextBlock>
+                    <CheckBox Name="CheckBox" Content="test checkbox" />
+                </StackPanel>
+            </Controls:Flyout>
+        </Controls:FlyoutsControl>
+    </Controls:MetroWindow.Flyouts>
+    <DockPanel>
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar
+                Style="{DynamicResource MaterialDesignToolBar}"
+                ClipToBounds="False">
+                <Button Name="NewFileButton"
+                        ToolTip="Nouveau fichier">
+                    <materialDesign:PackIcon
+                        Kind="File" />
+                </Button>
+                <Button Name="OpenButton"
+                        ToolTip="Ouvrir un fichier">
+                    <materialDesign:PackIcon
+                        Kind="FolderOpen" />
+                </Button>
+                <Button Name="SaveButton"
+                        ToolTip="Sauvegarder">
+                    <materialDesign:PackIcon
+                        Kind="ContentSave" />
+                </Button>
+                <Separator />
+                <Button Name="ConvertFolderFiles"
+                        ToolTip="Convertir les fichiers d'un répertoire">
+                    <materialDesign:PackIcon
+                        Kind="Files" />
+                </Button>
+                <Separator />
+                <Button
+                    Command="Cut"
+                    ToolTip="Cut"
+                    ToolBar.OverflowMode="AsNeeded">
+                    <materialDesign:PackIcon
+                        Kind="ContentCut" />
+                </Button>
+                <Button
+                    Command="Copy"
+                    ToolTip="Copy that stuff"
+                    ToolBar.OverflowMode="AsNeeded">
+                    <materialDesign:PackIcon
+                        Kind="ContentCopy" />
+                </Button>
+                <Button
+                    Command="Paste"
+                    ToolTip="Paste some stuff"
+                    ToolBar.OverflowMode="AsNeeded">
+                    <materialDesign:PackIcon
+                        Kind="ContentPaste" />
+                </Button>
+                <Separator />
+                <ListBox
+                    SelectionMode="Extended">
+                    <ListBox.ToolTip>
+                        <StackPanel>
+                            <TextBlock
+                                Text="MaterialDesignToolToggleListBox" />
+                            <TextBlock
+                                Text="Multiple selection" />
+                            <TextBlock
+                                Text="ListBoxAssist.IsToggle allows more natural toggle behaviour" />
+                        </StackPanel>
+                    </ListBox.ToolTip>
+                    <ListBoxItem>
+                        <materialDesign:PackIcon
+                            Kind="FormatBold" />
+                    </ListBoxItem>
+                    <ListBoxItem>
+                        <materialDesign:PackIcon
+                            Kind="FormatItalic" />
+                    </ListBoxItem>
+                    <ListBoxItem
+                        x:Name="UnderlineCheckbox">
+                        <materialDesign:PackIcon
+                            Kind="FormatUnderline" />
+                    </ListBoxItem>
+                </ListBox>
+                <Separator />
+                <Label
+                    Content="Font size:"
+                    VerticalAlignment="Center" />
+                <ComboBox Name="TextSize">
+                    <ComboBoxItem
+                        Content="7" />
+                    <ComboBoxItem
+                        Content="8" />
+                    <ComboBoxItem
+                        Content="9" />
+                    <ComboBoxItem
+                        Content="10" />
+                    <ComboBoxItem
+                        Content="11" />
+                    <ComboBoxItem
+                        Content="12" />
+                    <ComboBoxItem
+                        Content="13" />
+                    <ComboBoxItem
+                        Content="14" />
+                    <ComboBoxItem
+                        Content="15" />
+                    <ComboBoxItem
+                        Content="16" />
+                </ComboBox>
+                <Label
+                    Content="Ajouter une directive :"
+                    VerticalAlignment="Center" />
+                <ComboBox Name="AddObjectComboBox"
+                    VerticalContentAlignment="Center"
+                    Width="120" Controls:TextBoxHelper.TextButton="True" Controls:TextBoxHelper.ButtonContent="dddd"
+                    DisplayMemberPath="DisplayName">
+                </ComboBox>
+                <Separator />
+                <Button Name="ConfigFileSettingsButton"
+                        ToolTip="Follow me on Twitter">
+                    <materialDesign:PackIcon
+                        Kind="Cogs" />
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+        <Controls:MetroProgressBar DockPanel.Dock="Top" IsIndeterminate="True" Height="20" Name="ProgressBar" />
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <!--<RichTextBox Name="Editor" Grid.Column="0" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run>Some Paragraph</Run>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>-->
+            <TextBox Name="Editor" Grid.Column="0" AcceptsReturn="True" SelectionChanged="Editor_OnSelectionChanged"
+                     VerticalScrollBarVisibility="Auto" Text="" />
+            <WebBrowser Grid.Column="1" Name="pdfViewer"></WebBrowser>
+        </Grid>
+
+    </DockPanel>
+</Controls:MetroWindow>

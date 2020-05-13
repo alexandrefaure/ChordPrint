@@ -5,6 +5,9 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using ChordPrint.ViewModels;
+using ReactiveUI;
+using Splat;
 
 namespace ChordPrint
 {
