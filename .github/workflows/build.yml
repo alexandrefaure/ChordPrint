@@ -27,4 +27,4 @@ jobs:
       uses: actions/upload-artifact@v1.0.0
       with:
         name: setup
-        path: bin\Debug\app.publish
+        path: ChordPrint\bin\Debug\app.publish
