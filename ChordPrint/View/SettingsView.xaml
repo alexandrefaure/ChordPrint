@@ -11,7 +11,7 @@
                  Title="SettingsView">
     <DockPanel>
         <DockPanel DockPanel.Dock="Top">
-            <TextBox Name="ConfigFileTextBox" HorizontalAlignment="Stretch" DockPanel.Dock="Left"/>
+            <TextBox Name="ConfigFileTextBox" HorizontalAlignment="Stretch" DockPanel.Dock="Left" />
             <Button Name="OpenFileButton" Width="100" DockPanel.Dock="Right"
                     Content="Open"
                     Style="{DynamicResource MahApps.Styles.Button.AccentedSquare}" />

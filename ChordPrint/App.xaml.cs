@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
+using ChordPrint.View;
 using ChordPrint.ViewModels;
 using ReactiveUI;
 using Splat;
@@ -16,5 +11,10 @@ namespace ChordPrint
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            Locator.CurrentMutable.Register(() => new MainWindow(), typeof(IViewFor<MainViewModel>));
+            Locator.CurrentMutable.Register(() => new SettingsView(), typeof(IViewFor<SettingsViewModel>));
+        }
     }
 }

@@ -16,8 +16,8 @@ namespace ChordPrint.ViewModels
 
     public class SettingsViewModel : ReactiveObject, ICloseable, IChildViewModel
     {
+        private readonly FileManager _fileManager;
         public IParentViewModel _parentViewModel;
-        private FileManager _fileManager;
 
         public SettingsViewModel()
         {
@@ -26,6 +26,22 @@ namespace ChordPrint.ViewModels
             GoBackCommand = ReactiveCommand.CreateFromTask(GoBack);
             SelectFileCommand = ReactiveCommand.CreateFromTask(SelectFile);
         }
+
+        public ICommand SaveCommand { get; set; }
+        public ICommand GoBackCommand { get; set; }
+
+        [Reactive] public string ConfigFilePath { get; set; }
+
+        public ICommand SelectFileCommand { get; set; }
+        [Reactive] public string ConfigFileText { get; set; }
+
+        public void SetParentViewModel(IParentViewModel parentViewModel)
+        {
+            _parentViewModel = parentViewModel;
+            SetConfigFile();
+        }
+
+        public event EventHandler CloseRequest;
 
         private async Task SelectFile()
         {
@@ -36,17 +52,6 @@ namespace ChordPrint.ViewModels
                 ConfigFileText = File.ReadAllText(ConfigFilePath);
             }
         }
-
-        public ICommand SaveCommand { get; set; }
-        public ICommand GoBackCommand { get; set; }
-        
-        [Reactive]
-        public string ConfigFilePath { get; set; }
-
-        public ICommand SelectFileCommand { get; set; }
-        [Reactive] public string ConfigFileText { get; set; }
-
-        public event EventHandler CloseRequest;
 
         private async Task GoBack()
         {
@@ -68,12 +73,6 @@ namespace ChordPrint.ViewModels
             {
                 RequestClose();
             }
-        }
-
-        public void SetParentViewModel(IParentViewModel parentViewModel)
-        {
-            _parentViewModel = parentViewModel;
-            SetConfigFile();
         }
 
         private void SetConfigFile()

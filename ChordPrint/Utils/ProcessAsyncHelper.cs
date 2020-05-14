@@ -117,10 +117,7 @@ namespace ChordPrint.Utils
 
         private static Task<bool> WaitForExitAsync(Process process, int timeout)
         {
-            return Task.Run(() =>
-            {
-                return process.WaitForExit(timeout);
-            });
+            return Task.Run(() => { return process.WaitForExit(timeout); });
         }
 
 

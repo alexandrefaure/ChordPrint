@@ -38,6 +38,14 @@ namespace ChordPrint.View
             });
         }
 
+        object IViewFor.ViewModel
+        {
+            get => ViewModel;
+            set => ViewModel = value as SettingsViewModel;
+        }
+
+        public SettingsViewModel ViewModel { get; set; }
+
         private void BindCommands(CompositeDisposable disposableRegistration)
         {
             this.BindCommand(ViewModel,
@@ -56,21 +64,10 @@ namespace ChordPrint.View
                 .DisposeWith(disposableRegistration);
         }
 
-        object IViewFor.ViewModel
-        {
-            get => ViewModel;
-            set => ViewModel = value as SettingsViewModel;
-        }
-
-        public SettingsViewModel ViewModel { get; set; }
-
         private void SettingsView_OnLoaded(object sender, RoutedEventArgs e)
         {
             DataContext = ViewModel;
-            ViewModel.RequestClose += () =>
-            {
-                Close();
-            };
+            ViewModel.RequestClose += () => { Close(); };
         }
     }
 }

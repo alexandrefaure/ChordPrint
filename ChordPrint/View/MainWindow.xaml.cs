@@ -1,6 +1,7 @@
 ﻿using System.Reactive.Disposables;
 using System.Windows;
 using ChordPrint.ViewModels;
+using MahApps.Metro.Controls;
 using ReactiveUI;
 
 namespace ChordPrint.View
@@ -8,7 +9,7 @@ namespace ChordPrint.View
     /// <summary>
     ///     Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : IViewFor<MainViewModel>
+    public partial class MainWindow : MetroWindow, IViewFor<MainViewModel>
     {
         public MainWindow()
         {
@@ -68,6 +69,14 @@ namespace ChordPrint.View
             });
         }
 
+        object IViewFor.ViewModel
+        {
+            get => ViewModel;
+            set => ViewModel = value as MainViewModel;
+        }
+
+        public MainViewModel ViewModel { get; set; }
+
         private void BindCommands(CompositeDisposable disposableRegistration)
         {
             this.BindCommand(ViewModel,
@@ -96,20 +105,11 @@ namespace ChordPrint.View
                 .DisposeWith(disposableRegistration);
         }
 
-        object IViewFor.ViewModel
-        {
-            get => ViewModel;
-            set => ViewModel = value as MainViewModel;
-        }
-
-        public MainViewModel ViewModel { get; set; }
-
         private void Editor_OnSelectionChanged(object sender, RoutedEventArgs e)
         {
             int s = Editor.SelectionStart;
             ViewModel.EditorTextCaretIndex = s;
             // get the first status bar item
         }
-
     }
 }

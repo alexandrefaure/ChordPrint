@@ -4,11 +4,6 @@ namespace ChordPrint.Utils
 {
     public class FileManager
     {
-        public FileManager()
-        {
-
-        }
-
         public string AskUserToSelectFile()
         {
             string inputFilePath = null;

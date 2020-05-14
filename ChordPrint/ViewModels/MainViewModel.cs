@@ -38,9 +38,11 @@ namespace ChordPrint.ViewModels
 
     public class MainViewModel : ReactiveObject, IParentViewModel
     {
-        private string defaultConfigFilePath = @"C:\Users\FAURE\Dropbox\Musique\Mon SongBook\Chordii\chordproConfig.json";
         private readonly FileManager _fileManager;
         private readonly MessageService _messageService;
+
+        private readonly string defaultConfigFilePath =
+            @"C:\Users\FAURE\Dropbox\Musique\Mon SongBook\Chordii\chordproConfig.json";
 
         public MainViewModel()
         {
@@ -82,6 +84,38 @@ namespace ChordPrint.ViewModels
             };
         }
 
+        [Reactive] public string EditorText { get; set; }
+
+        [Reactive] public string PdfFilePath { get; set; }
+
+        [Reactive] public string CurrentFilePath { get; set; }
+
+        public ICommand OpenFileCommand { get; set; }
+        public ICommand OpenConfigFileSettingsCommand { get; set; }
+
+        public ICommand ConvertCommand { get; set; }
+
+        public ICommand SaveFileCommand { get; set; }
+
+        [Reactive] public string TextSize { get; set; }
+        public ICommand CreateFileCommand { get; set; }
+
+        [Reactive] public string MainWindowTitle { get; set; } = "ChordPro2Pdf";
+
+        public ICommand ConvertFolderFilesCommand { get; set; }
+
+        [Reactive] public Visibility ProgressBarVisibility { get; set; } = Visibility.Collapsed;
+
+        [Reactive] public bool IsSettingsFlyoutOpened { get; set; }
+
+        [Reactive] public IEnumerable DirectivesList { get; set; }
+
+        [Reactive] public Directive SelectedDirective { get; set; }
+
+        [Reactive] public int EditorTextCaretIndex { get; set; }
+
+        public GlobalContext _globalContext { get; }
+
         private async Task AddDirective()
         {
             var selectedIs = SelectedDirective;
@@ -89,7 +123,8 @@ namespace ChordPrint.ViewModels
             {
                 var previousCaret = EditorTextCaretIndex;
                 string newDisplay = EditorText.Substring(0, EditorTextCaretIndex) + selectedIs.Value +
-                                    EditorText.Substring(EditorTextCaretIndex, EditorText.Length - EditorTextCaretIndex);
+                                    EditorText.Substring(EditorTextCaretIndex,
+                                        EditorText.Length - EditorTextCaretIndex);
                 EditorText = newDisplay;
             }
         }
@@ -124,7 +159,7 @@ namespace ChordPrint.ViewModels
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
-                Filter = "Fichier ChordPro|*.cho", 
+                Filter = "Fichier ChordPro|*.cho",
                 Title = "Choisir l'emplacement du fichier à créer"
             };
             saveFileDialog.ShowDialog();
@@ -135,7 +170,7 @@ namespace ChordPrint.ViewModels
                 CurrentFilePath = saveFileDialog.FileName;
                 // Saves the Image via a FileStream created by the OpenFile method.
                 FileStream fs =
-                    (FileStream)saveFileDialog.OpenFile();
+                    (FileStream) saveFileDialog.OpenFile();
                 fs.Close();
             }
 
@@ -146,44 +181,6 @@ namespace ChordPrint.ViewModels
         {
             _globalContext.ConfigFilePath = defaultConfigFilePath;
         }
-
-        [Reactive] public string EditorText { get; set; }
-
-        [Reactive] public string PdfFilePath { get; set; }
-
-        [Reactive] public string CurrentFilePath { get; set; }
-
-        public ICommand OpenFileCommand { get; set; }
-        public ICommand OpenConfigFileSettingsCommand { get; set; }
-
-        public ICommand ConvertCommand { get; set; }
-
-        public ICommand SaveFileCommand { get; set; }
-
-        public GlobalContext _globalContext { get; }
-
-        [Reactive] public string TextSize { get; set; }
-        public ICommand CreateFileCommand { get; set; }
-
-        [Reactive]
-        public string MainWindowTitle { get; set; } = "ChordPro2Pdf";
-
-        public ICommand ConvertFolderFilesCommand { get; set; }
-
-        [Reactive]
-        public Visibility ProgressBarVisibility { get; set; } = Visibility.Collapsed;
-
-        [Reactive]
-        public bool IsSettingsFlyoutOpened { get; set; }
-
-        [Reactive]
-        public IEnumerable DirectivesList { get; set; }
-
-        [Reactive] 
-        public Directive SelectedDirective { get; set; }
-
-        [Reactive]
-        public int EditorTextCaretIndex { get; set; }
 
         private async Task OpenConfigFileSettings()
         {
