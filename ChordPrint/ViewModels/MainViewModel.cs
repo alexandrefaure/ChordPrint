@@ -115,6 +115,7 @@ namespace ChordPrint.ViewModels
         [Reactive] public int EditorTextCaretIndex { get; set; }
 
         public GlobalContext _globalContext { get; }
+        [Reactive] public Visibility PdfViewerVisibility { get; set; }
 
         private async Task AddDirective()
         {
@@ -253,9 +254,9 @@ namespace ChordPrint.ViewModels
 
         private async Task ConvertFileToPdfAndPrintPdf(string filePath)
         {
+            PdfFilePath = null;
             var resultPdfPath = await ConvertFileToPdf(filePath);
 
-            PdfFilePath = null;
             if (File.Exists(resultPdfPath))
             {
                 PdfFilePath = "file:///" + resultPdfPath;
@@ -268,21 +269,21 @@ namespace ChordPrint.ViewModels
             var configFilePath = _globalContext.ConfigFilePath;
             if (string.IsNullOrEmpty(configFilePath))
             {
-                await _messageService.MessageBoxShowAsync("Chordpro config file not defined");
+                await ShowErrorMessage("Chordpro config file not defined");
                 return null;
             }
 
             var filename = Path.GetFileName(filePath);
             if (string.IsNullOrEmpty(filename))
             {
-                await _messageService.MessageBoxShowAsync("Input file not defined");
+                await ShowErrorMessage("Input file not defined");
                 return null;
             }
 
             var directoryPath = Path.GetDirectoryName(filePath);
             if (string.IsNullOrEmpty(directoryPath))
             {
-                await _messageService.MessageBoxShowAsync("Directory not found");
+                await ShowErrorMessage("Directory not found");
                 return null;
             }
 
@@ -299,11 +300,18 @@ namespace ChordPrint.ViewModels
             var error = result.Output;
             if (!string.IsNullOrEmpty(error))
             {
-                await _messageService.MessageBoxShowAsync(error);
+                await ShowErrorMessage(error);
                 return null;
             }
 
             return outputFilePath;
+        }
+
+        private async Task ShowErrorMessage(string errorMessage)
+        {
+            PdfViewerVisibility = Visibility.Hidden;
+            await _messageService.MessageBoxShowAsync(errorMessage);
+            PdfViewerVisibility = Visibility.Visible;
         }
     }
 }

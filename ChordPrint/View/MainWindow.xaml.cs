@@ -34,6 +34,11 @@ namespace ChordPrint.View
                     .DisposeWith(disposableRegistration);
 
                 this.Bind(ViewModel,
+                        viewModel => viewModel.PdfViewerVisibility,
+                        view => view.pdfViewer.Visibility)
+                    .DisposeWith(disposableRegistration);
+
+                this.Bind(ViewModel,
                         viewModel => viewModel.TextSize,
                         view => view.TextSize.Text)
                     .DisposeWith(disposableRegistration);
