@@ -8,23 +8,30 @@
                  Loaded="SettingsView_OnLoaded"
                  SizeToContent="WidthAndHeight"
                  ResizeMode="NoResize"
-                 Title="SettingsView">
+                 Title="Fichier de configuration">
     <DockPanel>
         <DockPanel DockPanel.Dock="Top">
-            <TextBox Name="ConfigFileTextBox" HorizontalAlignment="Stretch" DockPanel.Dock="Left" />
-            <Button Name="OpenFileButton" Width="100" DockPanel.Dock="Right"
-                    Content="Open"
+            <TextBox Name="ConfigFileTextBox" HorizontalAlignment="Stretch" DockPanel.Dock="Left" Margin="5 5 5 5"/>
+            <Button Name="OpenFileButton" Width="100" DockPanel.Dock="Right" Margin="5 5 5 5"
+                    Content="Ouvrir"
                     Style="{DynamicResource MahApps.Styles.Button.AccentedSquare}" />
         </DockPanel>
         <TextBox Name="ConfigFileEditor" DockPanel.Dock="Top" AcceptsReturn="True" Height="400"
                  VerticalScrollBarVisibility="Auto" />
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="30" VerticalAlignment="Center">
-            <Button Name="SaveButton" Width="100"
-                    Content="Save"
+        <Grid DockPanel.Dock="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="SaveButton" Width="100" Grid.Column="0" Margin="5 5 5 5"
+                    Content="Enregistrer"
                     Style="{DynamicResource MahApps.Styles.Button.AccentedSquare}" />
-            <Button Name="BackButton" Width="100"
-                    Content="Back"
+            <Button Name="BackButton" Width="100" Grid.Column="1" Margin="5 5 5 5"
+                    Content="Annuler"
                     Style="{DynamicResource MahApps.Styles.Button.AccentedSquare}" />
-        </StackPanel>
+        </Grid>
     </DockPanel>
 </mah:MetroWindow>

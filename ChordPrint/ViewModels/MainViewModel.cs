@@ -225,7 +225,7 @@ namespace ChordPrint.ViewModels
 
         private string GetFilePath()
         {
-            var inputFilePath = _fileManager.AskUserToSelectFile();
+            var inputFilePath = _fileManager.AskUserToSelectFile("Fichier ChordPro|*.cho");
             if (string.IsNullOrEmpty(inputFilePath))
             {
                 return null;

@@ -54,7 +54,7 @@ namespace ChordPrint.ViewModels
 
         private async Task SelectFile()
         {
-            var configFilePath = _fileManager.AskUserToSelectFile();
+            var configFilePath = _fileManager.AskUserToSelectFile("Fichier JSON|*.json");
             if (!string.IsNullOrEmpty(configFilePath))
             {
                 ConfigFilePath = configFilePath;

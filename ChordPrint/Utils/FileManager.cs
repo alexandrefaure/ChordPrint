@@ -4,12 +4,12 @@ namespace ChordPrint.Utils
 {
     public class FileManager
     {
-        public string AskUserToSelectFile()
+        public string AskUserToSelectFile(string filter)
         {
             string inputFilePath = null;
             var openFileDialog = new OpenFileDialog
             {
-                Filter = "Fichier ChordPro|*.cho",
+                Filter = filter,
                 Title = "Choisir le fichier à ouvrir"
             };
             if (openFileDialog.ShowDialog() == true)
