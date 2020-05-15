@@ -122,7 +122,8 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBox Name="Editor" Grid.Column="0" AcceptsReturn="True" SelectionChanged="Editor_OnSelectionChanged" AcceptsTab="True" VerticalContentAlignment="Top"
+            <TextBox Name="Editor" Grid.Column="0" AcceptsReturn="True" SelectionChanged="Editor_OnSelectionChanged"
+                     AcceptsTab="True" VerticalContentAlignment="Top"
                      VerticalScrollBarVisibility="Auto" />
             <WebBrowser Grid.Column="1" Name="pdfViewer" />
         </Grid>

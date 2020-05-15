@@ -41,9 +41,6 @@ namespace ChordPrint.ViewModels
         private readonly FileManager _fileManager;
         private readonly MessageService _messageService;
 
-        private readonly string defaultConfigFilePath =
-            @"C:\Users\FAURE\Dropbox\Musique\Mon SongBook\Chordii\chordproConfig.json";
-
         public MainViewModel()
         {
             _globalContext = new GlobalContext();
@@ -113,9 +110,9 @@ namespace ChordPrint.ViewModels
         [Reactive] public Directive SelectedDirective { get; set; }
 
         [Reactive] public int EditorTextCaretIndex { get; set; }
+        [Reactive] public Visibility PdfViewerVisibility { get; set; }
 
         public GlobalContext _globalContext { get; }
-        [Reactive] public Visibility PdfViewerVisibility { get; set; }
 
         private async Task AddDirective()
         {
@@ -180,7 +177,7 @@ namespace ChordPrint.ViewModels
 
         private void InitializeGlobalContext()
         {
-            _globalContext.ConfigFilePath = defaultConfigFilePath;
+            //_globalContext.ConfigFilePath = Settings.Default.ConfigurationFile;
         }
 
         private async Task OpenConfigFileSettings()

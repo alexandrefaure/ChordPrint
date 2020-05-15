@@ -1,7 +1,9 @@
-﻿namespace ChordPrint
+﻿using ChordPrint.Properties;
+
+namespace ChordPrint
 {
     public class GlobalContext
     {
-        public string ConfigFilePath { get; set; }
+        public string ConfigFilePath => Settings.Default.ConfigurationFile;
     }
 }
