@@ -1,3 +1,4 @@
 /ChordPrint/bin/*
 /ChordPrint/obj/*
 /packages/*
+/.vs/*

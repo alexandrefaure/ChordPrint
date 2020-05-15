@@ -7,6 +7,7 @@
                  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                  BorderThickness="1"
                  mc:Ignorable="d"
+                 WindowState="Maximized"
                  Title="ChordPro2Pdf" Height="450" Width="1200">
     <mah:MetroWindow.RightWindowCommands>
         <mah:WindowCommands>
@@ -16,7 +17,7 @@
     </mah:MetroWindow.RightWindowCommands>
     <mah:MetroWindow.Flyouts>
         <mah:FlyoutsControl>
-            <mah:Flyout x:Name="settingsFlyout" Header="Paramètres" Theme="Dark" Position="Left" Width="400"
+            <mah:Flyout x:Name="settingsFlyout" Header="Paramètres" Theme="Accent" Position="Left" Width="400"
                         IsOpen="False" BorderBrush="Black" BorderThickness="3,0,3,3">
                 <StackPanel>
                     <TextBlock FontSize="24">Hello World</TextBlock>
@@ -74,35 +75,8 @@
                         Kind="ContentPaste" />
                 </Button>
                 <Separator />
-                <ListBox
-                    SelectionMode="Extended">
-                    <ListBox.ToolTip>
-                        <StackPanel>
-                            <TextBlock
-                                Text="MaterialDesignToolToggleListBox" />
-                            <TextBlock
-                                Text="Multiple selection" />
-                            <TextBlock
-                                Text="ListBoxAssist.IsToggle allows more natural toggle behaviour" />
-                        </StackPanel>
-                    </ListBox.ToolTip>
-                    <ListBoxItem>
-                        <materialDesign:PackIcon
-                            Kind="FormatBold" />
-                    </ListBoxItem>
-                    <ListBoxItem>
-                        <materialDesign:PackIcon
-                            Kind="FormatItalic" />
-                    </ListBoxItem>
-                    <ListBoxItem
-                        x:Name="UnderlineCheckbox">
-                        <materialDesign:PackIcon
-                            Kind="FormatUnderline" />
-                    </ListBoxItem>
-                </ListBox>
-                <Separator />
                 <Label
-                    Content="Font size:"
+                    Content="Taille texte:"
                     VerticalAlignment="Center" />
                 <ComboBox Name="TextSize">
                     <ComboBoxItem
@@ -148,15 +122,8 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <!--<RichTextBox Name="Editor" Grid.Column="0" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                <FlowDocument>
-                    <Paragraph>
-                        <Run>Some Paragraph</Run>
-                    </Paragraph>
-                </FlowDocument>
-            </RichTextBox>-->
-            <TextBox Name="Editor" Grid.Column="0" AcceptsReturn="True" SelectionChanged="Editor_OnSelectionChanged"
-                     VerticalScrollBarVisibility="Auto" Text="" />
+            <TextBox Name="Editor" Grid.Column="0" AcceptsReturn="True" SelectionChanged="Editor_OnSelectionChanged" AcceptsTab="True" VerticalContentAlignment="Top"
+                     VerticalScrollBarVisibility="Auto" />
             <WebBrowser Grid.Column="1" Name="pdfViewer" />
         </Grid>
 

@@ -100,7 +100,7 @@ namespace ChordPrint.ViewModels
         [Reactive] public string TextSize { get; set; }
         public ICommand CreateFileCommand { get; set; }
 
-        [Reactive] public string MainWindowTitle { get; set; } = "ChordPro2Pdf";
+        [Reactive] public string MainWindowTitle { get; set; } = "ChordPrint";
 
         public ICommand ConvertFolderFilesCommand { get; set; }
 
@@ -223,7 +223,7 @@ namespace ChordPrint.ViewModels
 
         private void SetWindowTitle(string fileName)
         {
-            MainWindowTitle = $"ChordPro2Pdf - {fileName}";
+            MainWindowTitle = $"ChordPrint - {fileName}";
         }
 
         private string GetFilePath()
