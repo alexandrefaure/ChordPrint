@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using ChordPrint.Properties;
+using ChordPrint.Utils;
 using ChordPrint.View;
 using ChordPrint.ViewModels;
 using ReactiveUI;
@@ -16,6 +17,10 @@ namespace ChordPrint
         {
             Locator.CurrentMutable.Register(() => new MainWindow(), typeof(IViewFor<MainViewModel>));
             Locator.CurrentMutable.Register(() => new SettingsView(), typeof(IViewFor<SettingsViewModel>));
+            Locator.CurrentMutable.Register(() => new FlyOutConfigurationView(),
+                typeof(IViewFor<FlyOutConfigurationViewModel>));
+
+            Locator.CurrentMutable.Register(() => new ConfigurationService(), typeof(IConfigurationService));
         }
 
         private void OnExit(object sender, ExitEventArgs e)

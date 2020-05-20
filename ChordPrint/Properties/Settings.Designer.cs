@@ -26,6 +26,18 @@ namespace ChordPrint.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ConfigurationFilePath {
+            get {
+                return ((string)(this["ConfigurationFilePath"]));
+            }
+            set {
+                this["ConfigurationFilePath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string ConfigurationFile {
             get {
                 return ((string)(this["ConfigurationFile"]));

@@ -38,11 +38,13 @@ namespace ChordPrint.ViewModels
 
     public class MainViewModel : ReactiveObject, IParentViewModel
     {
+        private readonly IConfigurationService _configurationService;
         private readonly FileManager _fileManager;
         private readonly MessageService _messageService;
 
-        public MainViewModel()
+        public MainViewModel(IConfigurationService configurationService)
         {
+            _configurationService = configurationService;
             _globalContext = new GlobalContext();
             _messageService = new MessageService();
             _fileManager = new FileManager();
@@ -63,8 +65,6 @@ namespace ChordPrint.ViewModels
                 .Where(vm => vm != Directive.Unknown)
                 .DistinctUntilChanged()
                 .Subscribe(vm => AddDirective());
-
-            InitializeGlobalContext();
 
             DirectivesList = new ObservableCollection<Directive>
             {
@@ -175,11 +175,6 @@ namespace ChordPrint.ViewModels
             await OpenFile(CurrentFilePath);
         }
 
-        private void InitializeGlobalContext()
-        {
-            //_globalContext.ConfigFilePath = Settings.Default.ConfigurationFile;
-        }
-
         private async Task OpenConfigFileSettings()
         {
             var viewModel = new SettingsViewModel();
@@ -212,10 +207,8 @@ namespace ChordPrint.ViewModels
             }
 
             EditorText = File.ReadAllText(filePath);
-            if (!string.IsNullOrEmpty(filePath) && !string.IsNullOrEmpty(_globalContext.ConfigFilePath))
-            {
-                await ConvertFileToPdfAndPrintPdf(CurrentFilePath);
-            }
+
+            await ConvertFileToPdfAndPrintPdf(CurrentFilePath);
         }
 
         private void SetWindowTitle(string fileName)
@@ -236,12 +229,9 @@ namespace ChordPrint.ViewModels
 
         private async Task SaveAndConvert()
         {
-            if (!string.IsNullOrEmpty(CurrentFilePath) && !string.IsNullOrEmpty(_globalContext.ConfigFilePath))
-            {
-                SaveFile();
+            SaveFile();
 
-                await ConvertFileToPdfAndPrintPdf(CurrentFilePath);
-            }
+            await ConvertFileToPdfAndPrintPdf(CurrentFilePath);
         }
 
         private void SaveFile()
@@ -263,8 +253,13 @@ namespace ChordPrint.ViewModels
         private async Task<string> ConvertFileToPdf(string filePath)
         {
             var exePath = "chordpro.exe";
-            var configFilePath = _globalContext.ConfigFilePath;
-            if (string.IsNullOrEmpty(configFilePath))
+
+            // Create temp config file path
+            var configurationFilePath = Path.GetTempPath() + Guid.NewGuid() + ".json";
+            File.WriteAllText(configurationFilePath, _configurationService.LoadConfigurationFileText());
+
+            //var configFilePath = _globalContext.ConfigFilePath;
+            if (string.IsNullOrEmpty(configurationFilePath))
             {
                 await ShowErrorMessage("Chordpro config file not defined");
                 return null;
@@ -285,7 +280,7 @@ namespace ChordPrint.ViewModels
             }
 
             var outputFilePath = directoryPath + "\\" + filename.Replace(".cho", ".pdf");
-            var arguments = $"\"{filePath}\" -o \"{outputFilePath}\" --cfg \"{configFilePath}\"";
+            var arguments = $"\"{filePath}\" -o \"{outputFilePath}\" --cfg \"{configurationFilePath}\"";
 
             if (!string.IsNullOrEmpty(TextSize))
             {

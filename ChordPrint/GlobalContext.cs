@@ -4,6 +4,6 @@ namespace ChordPrint
 {
     public class GlobalContext
     {
-        public string ConfigFilePath => Settings.Default.ConfigurationFile;
+        public string ConfigFilePath => Settings.Default.ConfigurationFilePath;
     }
 }

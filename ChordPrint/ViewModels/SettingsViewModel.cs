@@ -72,7 +72,7 @@ namespace ChordPrint.ViewModels
             // Save configuration file
             File.WriteAllText(ConfigFilePath, ConfigFileText);
 
-            Settings.Default.ConfigurationFile = ConfigFilePath;
+            Settings.Default.ConfigurationFilePath = ConfigFilePath;
 
             Close();
         }

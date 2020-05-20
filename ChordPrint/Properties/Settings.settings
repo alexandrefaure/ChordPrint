@@ -4,6 +4,9 @@
               GeneratedClassNamespace="ChordPrint.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
+    <Setting Name="ConfigurationFilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
     <Setting Name="ConfigurationFile" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
