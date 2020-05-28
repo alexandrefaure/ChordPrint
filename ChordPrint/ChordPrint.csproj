@@ -126,8 +126,15 @@
     <Compile Include="Utils\IConfigurationService.cs" />
     <Compile Include="Utils\MessageService.cs" />
     <Compile Include="Utils\ProcessAsyncHelper.cs" />
+    <Compile Include="ViewModels\ConfigDiagrams.cs" />
+    <Compile Include="ViewModels\ConfigFonts.cs" />
+    <Compile Include="ViewModels\ConfigPdf.cs" />
+    <Compile Include="ViewModels\ConfigSettings.cs" />
+    <Compile Include="ViewModels\ConfigurationFile.cs" />
     <Compile Include="ViewModels\FlyOutConfigurationViewModel.cs" />
+    <Compile Include="ViewModels\FontElement.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\SettingsTitle.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="View\FlyOutConfigurationView.xaml.cs">
       <DependentUpon>FlyOutConfigurationView.xaml</DependentUpon>

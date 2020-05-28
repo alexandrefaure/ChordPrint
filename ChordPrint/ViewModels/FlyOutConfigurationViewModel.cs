@@ -1,4 +1,8 @@
-﻿using ChordPrint.Utils;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Reactive.Linq;
+using ChordPrint.Utils;
+using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
 namespace ChordPrint.ViewModels
@@ -11,65 +15,32 @@ namespace ChordPrint.ViewModels
         {
             _configurationService = configurationService;
             ConfigurationFile = _configurationService.LoadConfigurationFile();
+
+            SettingsTitlePositions = new ObservableCollection<SettingsTitle>
+            {
+                SettingsTitle.Center,
+                SettingsTitle.Left,
+                SettingsTitle.Right,
+            };
+
+            this.WhenAnyValue(vm => vm.ConfigurationFile)
+                .Where(vm => vm != null)
+                .DistinctUntilChanged()
+                .Subscribe(vm =>
+                {
+                    SelectedSettingsTitle = (SettingsTitle) Enum.Parse(typeof(SettingsTitle),
+                        ConfigurationFile.settings.titles, true);
+                });
         }
 
         [Reactive] public ConfigurationFile ConfigurationFile { get; set; }
+        [Reactive] public ObservableCollection<SettingsTitle> SettingsTitlePositions { get; set; }
+
+        [Reactive] public SettingsTitle SelectedSettingsTitle { get; set; }
 
         public void Save()
         {
             _configurationService.SaveConfiguration(ConfigurationFile);
         }
-    }
-
-    public class ConfigurationFile
-    {
-        public ConfigSettings settings { get; set; }
-
-        public ConfigPdf pdf { get; set; }
-    }
-
-    public class ConfigPdf
-    {
-        public ConfigFonts fonts { get; set; }
-        public ConfigDiagrams diagrams { get; set; }
-        public int margintop { get; set; }
-        public int marginbottom { get; set; }
-        public int marginleft { get; set; }
-        public int marginright { get; set; }
-        public int headspace { get; set; }
-        public int footspace { get; set; }
-    }
-
-    public class ConfigDiagrams
-    {
-        public string show { get; set; }
-        public int width { get; set; }
-        public int height { get; set; }
-        public double hspace { get; set; }
-        public int vspace { get; set; }
-        public int vcells { get; set; }
-        public double linewidth { get; set; }
-    }
-
-    public class ConfigFonts
-    {
-        public FontElement title { get; set; }
-        public FontElement subtitle { get; set; }
-        public FontElement text { get; set; }
-        public FontElement comment { get; set; }
-        public FontElement chord { get; set; }
-    }
-
-    public class FontElement
-    {
-        public string name { get; set; }
-        public int size { get; set; }
-        public string color { get; set; }
-    }
-
-    public class ConfigSettings
-    {
-        public string titles { get; set; }
-        public string columns { get; set; }
     }
 }

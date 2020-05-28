@@ -18,7 +18,7 @@
     </mah:MetroWindow.RightWindowCommands>
     <mah:MetroWindow.Flyouts>
         <mah:FlyoutsControl>
-            <mah:Flyout x:Name="settingsFlyout" Header="Paramètres" Theme="Accent" Position="Left" Width="400"
+            <mah:Flyout x:Name="settingsFlyout" Header="Paramètres" Theme="Adapt" Position="Left" Width="400"
                         IsOpen="False" BorderBrush="Black" BorderThickness="3,0,3,3">
                 <view:FlyOutConfigurationView />
             </mah:Flyout>
@@ -103,8 +103,8 @@
                     VerticalAlignment="Center" />
                 <ComboBox Name="AddObjectComboBox"
                           VerticalContentAlignment="Center"
+                          Style="{DynamicResource MahApps.Styles.ComboBox.Virtualized}"
                           Width="120" mah:TextBoxHelper.TextButton="True"
-                          mah:TextBoxHelper.ButtonContent="dddd"
                           DisplayMemberPath="DisplayName" />
                 <Separator />
                 <Button Name="ConfigFileSettingsButton"

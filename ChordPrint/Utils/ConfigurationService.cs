@@ -86,20 +86,5 @@ namespace ChordPrint.Utils
         {
             return Settings.Default.ConfigurationFile;
         }
-
-
-        //private void InitializeConfigurationFile()
-        //{
-        //    var settingsConfigurationFile = Settings.Default.ConfigurationFile;
-        //    if (string.IsNullOrEmpty(settingsConfigurationFile))
-        //    {
-        //        ConfigurationFile = _defaultConfigFile;
-        //    }
-        //    else
-        //    {
-        //        ConfigurationFile =
-        //            JsonConvert.DeserializeObject<ConfigurationFile>(settingsConfigurationFile);
-        //    }
-        //}
     }
 }
