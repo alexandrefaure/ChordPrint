@@ -13,7 +13,7 @@
                                 d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
 
-        <GroupBox Margin="10" Header="Paramètres globaux" Background="AliceBlue">
+        <GroupBox Margin="10" Header="Général" Background="AliceBlue">
 
             <Grid d:DataContext="{d:DesignInstance DataGrid}" Grid.IsSharedSizeScope="True">
                 <Grid.ColumnDefinitions>
@@ -24,7 +24,6 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-
 
                 <TextBlock Grid.Row="0"
                            Grid.Column="0"
@@ -59,6 +58,108 @@
                                    Maximum="40"
                                    Minimum="0" />
             </Grid>
+        </GroupBox>
+
+        <GroupBox Margin="10" Header="PDF" Background="AliceBlue">
+            <StackPanel>
+
+                <Grid d:DataContext="{d:DesignInstance DataGrid}" Grid.IsSharedSizeScope="True">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="labels" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Margin="2"
+                               VerticalAlignment="Center"
+                               Text="margintop" />
+                    <mah:NumericUpDown Grid.Row="0" 
+                                       Name="margintop"
+                                       Grid.Column="1"
+                                       Width="100"
+                                       Margin="2"
+                                       VerticalAlignment="Center"
+                                       Minimum="0" />
+
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="0"
+                               Margin="2"
+                               VerticalAlignment="Center"
+                               Text="marginbottom" />
+                    <mah:NumericUpDown Grid.Row="1" 
+                                       Name="marginbottom"
+                                       Grid.Column="1"
+                                       Width="100"
+                                       Margin="2"
+                                       VerticalAlignment="Center"
+                                       Minimum="0" />
+
+                    <TextBlock Grid.Row="2"
+                               Grid.Column="0"
+                               Margin="2"
+                               VerticalAlignment="Center"
+                               Text="marginleft" />
+                    <mah:NumericUpDown Grid.Row="2" 
+                                       Name="marginleft"
+                                       Grid.Column="1"
+                                       Width="100"
+                                       Margin="2"
+                                       VerticalAlignment="Center"
+                                       Minimum="0" />
+
+                    <TextBlock Grid.Row="3"
+                               Grid.Column="0"
+                               Margin="2"
+                               VerticalAlignment="Center"
+                               Text="marginright" />
+                    <mah:NumericUpDown Grid.Row="3"
+                                       Name="marginright"
+                                       Grid.Column="1"
+                                       Width="100"
+                                       Margin="2"
+                                       VerticalAlignment="Center"
+                                       Minimum="0" />
+
+                    <TextBlock Grid.Row="4"
+                               Grid.Column="0"
+                               Margin="2"
+                               VerticalAlignment="Center"
+                               Text="headspace" />
+                    <mah:NumericUpDown Grid.Row="4"
+                                       Name="headspace"
+                                       Grid.Column="1"
+                                       Width="100"
+                                       Margin="2"
+                                       VerticalAlignment="Center"
+                                       Minimum="0" />
+
+                    <TextBlock Grid.Row="5"
+                               Grid.Column="0"
+                               Margin="2"
+                               VerticalAlignment="Center"
+                               Text="footspace" />
+                    <mah:NumericUpDown Grid.Row="5"
+                                       Name="footspace"
+                                       Grid.Column="1"
+                                       Width="100"
+                                       Margin="2"
+                                       VerticalAlignment="Center"
+                                       Minimum="0" />
+                </Grid>
+
+                <GroupBox Margin="10" Header="Général" Background="AliceBlue" />
+
+                <GroupBox Margin="10" Header="Diagrammes" Background="AliceBlue" />
+            </StackPanel>
         </GroupBox>
 
         <GroupBox Margin="10" Header="Titre">

@@ -55,12 +55,12 @@ namespace ChordPrint.Utils
                     vcells = 4,
                     linewidth = 0.1
                 },
-                margintop = 80,
-                marginbottom = 40,
-                marginleft = 30,
-                marginright = 30,
-                headspace = 60,
-                footspace = 20
+                margintop = "80",
+                marginbottom = "40",
+                marginleft = "30",
+                marginright = "30",
+                headspace = "60",
+                footspace = "20"
             }
         };
 

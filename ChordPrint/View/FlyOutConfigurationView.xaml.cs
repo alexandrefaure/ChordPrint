@@ -19,12 +19,11 @@ namespace ChordPrint.View
             ViewModel = new FlyOutConfigurationViewModel(Locator.Current.GetService<IConfigurationService>());
             this.WhenActivated(d =>
             {
-                this.Bind(ViewModel,
-                        viewModel => viewModel.ConfigurationFile.settings.columns,
-                        view => view.ColumnNumbers.Value)
-                    .DisposeWith(d);
+
 
                 #region Settings
+
+                #region Titles
 
                 this.OneWayBind(ViewModel,
                         viewModel => viewModel.SettingsTitlePositions,
@@ -41,6 +40,47 @@ namespace ChordPrint.View
                     ViewModel.ConfigurationFile.settings.titles =
                         TitlePositionComboBox.SelectedItem.ToString().ToLower();
                 });
+
+                #endregion
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.settings.columns,
+                        view => view.ColumnNumbers.Value)
+                    .DisposeWith(d);
+
+                #endregion
+
+                #region PDF
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.margintop,
+                        view => view.margintop.Value)
+                    .DisposeWith(d);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.marginbottom,
+                        view => view.marginbottom.Value)
+                    .DisposeWith(d);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.marginleft,
+                        view => view.marginleft.Value)
+                    .DisposeWith(d);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.marginright,
+                        view => view.marginright.Value)
+                    .DisposeWith(d);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.headspace,
+                        view => view.headspace.Value)
+                    .DisposeWith(d);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.footspace,
+                        view => view.footspace.Value)
+                    .DisposeWith(d);
 
                 #endregion
             });
