@@ -1,8 +1,10 @@
 ﻿using System.Reactive.Disposables;
 using System.Windows;
+using ChordPrint.Utils;
 using ChordPrint.ViewModels;
 using MahApps.Metro.Controls;
 using ReactiveUI;
+using Splat;
 
 namespace ChordPrint.View
 {
@@ -14,7 +16,7 @@ namespace ChordPrint.View
         public MainWindow()
         {
             InitializeComponent();
-            ViewModel = new MainViewModel();
+            ViewModel = new MainViewModel(Locator.Current.GetService<IConfigurationService>());
             DataContext = ViewModel;
             this.WhenActivated(disposableRegistration =>
             {
@@ -68,7 +70,6 @@ namespace ChordPrint.View
                         viewModel => viewModel.SelectedDirective,
                         view => view.AddObjectComboBox.SelectionBoxItem)
                     .DisposeWith(disposableRegistration);
-
 
                 BindCommands(disposableRegistration);
             });

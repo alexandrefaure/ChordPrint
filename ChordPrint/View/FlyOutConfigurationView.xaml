@@ -1,0 +1,304 @@
+﻿<reactiveUi:ReactiveUserControl x:TypeArguments="viewModels:FlyOutConfigurationViewModel"
+                                x:Class="ChordPrint.View.FlyOutConfigurationView"
+                                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                xmlns:local="clr-namespace:ChordPrint.View"
+                                xmlns:reactiveUi="http://reactiveui.net"
+                                xmlns:viewModels="clr-namespace:ChordPrint.ViewModels"
+                                xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                                xmlns:System="clr-namespace:System;assembly=mscorlib"
+                                mc:Ignorable="d"
+                                d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+
+        <GroupBox Margin="10" Header="Général" Background="AliceBlue">
+
+            <Grid d:DataContext="{d:DesignInstance DataGrid}" Grid.IsSharedSizeScope="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="labels" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           Margin="2"
+                           VerticalAlignment="Center"
+                           Text="Position titre" />
+                <ComboBox Grid.Row="0"
+                          Grid.Column="1"
+                          Name="TitlePositionComboBox"
+                          Width="100"
+                          Margin="2"
+                          Style="{DynamicResource MahApps.Styles.ComboBox.Virtualized}"
+                          VerticalAlignment="Center">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+
+                <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           Margin="2"
+                           VerticalAlignment="Center"
+                           Text="Colonnes" />
+                <mah:NumericUpDown Grid.Row="1" Name="ColumnNumbers"
+                                   Grid.Column="1"
+                                   Width="100"
+                                   Margin="2"
+                                   VerticalAlignment="Center"
+                                   Maximum="40"
+                                   Minimum="0" />
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Margin="10" Header="PDF" Background="AliceBlue">
+            <StackPanel>
+
+                <Grid d:DataContext="{d:DesignInstance DataGrid}" Grid.IsSharedSizeScope="True">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="labels" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Margin="2"
+                               VerticalAlignment="Center"
+                               Text="margintop" />
+                    <mah:NumericUpDown Grid.Row="0" 
+                                       Name="margintop"
+                                       Grid.Column="1"
+                                       Width="100"
+                                       Margin="2"
+                                       VerticalAlignment="Center"
+                                       Minimum="0" />
+
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="0"
+                               Margin="2"
+                               VerticalAlignment="Center"
+                               Text="marginbottom" />
+                    <mah:NumericUpDown Grid.Row="1" 
+                                       Name="marginbottom"
+                                       Grid.Column="1"
+                                       Width="100"
+                                       Margin="2"
+                                       VerticalAlignment="Center"
+                                       Minimum="0" />
+
+                    <TextBlock Grid.Row="2"
+                               Grid.Column="0"
+                               Margin="2"
+                               VerticalAlignment="Center"
+                               Text="marginleft" />
+                    <mah:NumericUpDown Grid.Row="2" 
+                                       Name="marginleft"
+                                       Grid.Column="1"
+                                       Width="100"
+                                       Margin="2"
+                                       VerticalAlignment="Center"
+                                       Minimum="0" />
+
+                    <TextBlock Grid.Row="3"
+                               Grid.Column="0"
+                               Margin="2"
+                               VerticalAlignment="Center"
+                               Text="marginright" />
+                    <mah:NumericUpDown Grid.Row="3"
+                                       Name="marginright"
+                                       Grid.Column="1"
+                                       Width="100"
+                                       Margin="2"
+                                       VerticalAlignment="Center"
+                                       Minimum="0" />
+
+                    <TextBlock Grid.Row="4"
+                               Grid.Column="0"
+                               Margin="2"
+                               VerticalAlignment="Center"
+                               Text="headspace" />
+                    <mah:NumericUpDown Grid.Row="4"
+                                       Name="headspace"
+                                       Grid.Column="1"
+                                       Width="100"
+                                       Margin="2"
+                                       VerticalAlignment="Center"
+                                       Minimum="0" />
+
+                    <TextBlock Grid.Row="5"
+                               Grid.Column="0"
+                               Margin="2"
+                               VerticalAlignment="Center"
+                               Text="footspace" />
+                    <mah:NumericUpDown Grid.Row="5"
+                                       Name="footspace"
+                                       Grid.Column="1"
+                                       Width="100"
+                                       Margin="2"
+                                       VerticalAlignment="Center"
+                                       Minimum="0" />
+                </Grid>
+
+                <GroupBox Margin="10" Header="Général" Background="AliceBlue" />
+
+                <GroupBox Margin="10" Header="Diagrammes" Background="AliceBlue" />
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Margin="10" Header="Titre">
+
+            <Grid d:DataContext="{d:DesignInstance DataGrid}" Grid.IsSharedSizeScope="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="labels" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+
+                <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           Margin="2"
+                           VerticalAlignment="Center"
+                           Text="Police" />
+                <ComboBox Grid.Row="0"
+                          Grid.Column="1"
+                          Width="100"
+                          Margin="2"
+                          VerticalAlignment="Center" />
+
+                <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           Margin="2"
+                           VerticalAlignment="Center"
+                           Text="Couleur" />
+                <ComboBox Grid.Row="1"
+                          Grid.Column="1"
+                          Width="100"
+                          Margin="2"
+                          VerticalAlignment="Center" />
+
+                <TextBlock Grid.Row="2"
+                           Grid.Column="0"
+                           Margin="2"
+                           VerticalAlignment="Center"
+                           Text="Taille" />
+                <mah:NumericUpDown Grid.Row="2" Name="FontSize"
+                                   Grid.Column="1"
+                                   Width="100"
+                                   Margin="2"
+                                   VerticalAlignment="Center"
+                                   Maximum="40"
+                                   Minimum="0" />
+            </Grid>
+        </GroupBox>
+
+        <!--<GroupBox Margin="10" Header="Settings">
+
+            <Grid d:DataContext="{d:DesignInstance DataGrid}" Grid.IsSharedSizeScope="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="labels" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           Margin="2"
+                           VerticalAlignment="Center"
+                           Text="IsEnabled" />
+                <CheckBox Grid.Row="0"
+                          Grid.Column="1"
+                          Margin="2"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center"
+                          IsChecked="{Binding IsEnabled}" />
+
+                <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           Margin="2"
+                           VerticalAlignment="Center"
+                           Text="CellEditAssist" />
+                <CheckBox Grid.Row="1"
+                          Grid.Column="1"
+                          Margin="2"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center"
+                          IsChecked="{Binding Path=(mah:DataGridHelper.EnableCellEditAssist)}" />
+
+                <TextBlock Grid.Row="2"
+                           Grid.Column="0"
+                           Margin="2"
+                           VerticalAlignment="Center"
+                           Text="SelectionUnit" />
+                <ComboBox Grid.Row="2"
+                          Grid.Column="1"
+                          Width="100"
+                          Margin="2"
+                          VerticalAlignment="Center" />
+
+                <TextBlock Grid.Row="3"
+                           Grid.Column="0"
+                           Margin="2"
+                           VerticalAlignment="Center"
+                           Text="GridLines" />
+                <ComboBox Grid.Row="3"
+                          Grid.Column="1"
+                          Width="100"
+                          Margin="2"
+                          VerticalAlignment="Center" />
+
+                <TextBlock Grid.Row="4"
+                           Grid.Column="0"
+                           Margin="2"
+                           VerticalAlignment="Center"
+                           Text="Headers" />
+                <ComboBox Grid.Row="4"
+                          Grid.Column="1"
+                          Width="100"
+                          Margin="2"
+                          VerticalAlignment="Center" />
+
+                <TextBlock Grid.Row="5"
+                           Grid.Column="0"
+                           Margin="2"
+                           VerticalAlignment="Center"
+                           Text="Colonnes" />
+                <mah:NumericUpDown Grid.Row="5" Name="ColumnNumbers"
+                                   Grid.Column="1"
+                                   Width="100"
+                                   Margin="2"
+                                   VerticalAlignment="Center"
+                                   Maximum="40"
+                                   Minimum="0" />
+            </Grid>
+        </GroupBox>-->
+    </StackPanel>
+</reactiveUi:ReactiveUserControl>
