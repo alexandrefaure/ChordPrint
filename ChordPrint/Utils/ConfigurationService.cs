@@ -20,40 +20,40 @@ namespace ChordPrint.Utils
                     title = new FontElement
                     {
                         name = "Arial",
-                        size = 16
+                        size = "16"
                     },
                     subtitle = new FontElement
                     {
                         name = "Arial italic",
-                        size = 10,
+                        size = "10",
                         color = "dark grey"
                     },
                     text = new FontElement
                     {
                         name = "Arial",
-                        size = 9
+                        size = "9"
                     },
                     comment = new FontElement
                     {
                         name = "Arial",
-                        size = 9
+                        size = "9"
                     },
                     chord = new FontElement
                     {
                         name = "Arial bold",
-                        size = 8,
+                        size = "8",
                         color = "dark blue"
                     }
                 },
                 diagrams = new ConfigDiagrams
                 {
                     show = "below",
-                    width = 9,
-                    height = 9,
-                    hspace = 3.95,
-                    vspace = 3,
-                    vcells = 4,
-                    linewidth = 0.1
+                    width = "9",
+                    height = "9",
+                    hspace = "3.95",
+                    vspace = "3",
+                    vcells = "4",
+                    linewidth = "0.1"
                 },
                 margintop = "80",
                 marginbottom = "40",

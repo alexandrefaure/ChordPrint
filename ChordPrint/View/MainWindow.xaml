@@ -20,7 +20,9 @@
         <mah:FlyoutsControl>
             <mah:Flyout x:Name="settingsFlyout" Header="Paramètres" Theme="Adapt" Position="Left" Width="400"
                         IsOpen="False" BorderBrush="Black" BorderThickness="3,0,3,3">
-                <view:FlyOutConfigurationView />
+                <ScrollViewer>
+                    <view:FlyOutConfigurationView />
+                </ScrollViewer>
             </mah:Flyout>
         </mah:FlyoutsControl>
     </mah:MetroWindow.Flyouts>

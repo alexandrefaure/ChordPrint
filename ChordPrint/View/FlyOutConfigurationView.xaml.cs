@@ -82,6 +82,135 @@ namespace ChordPrint.View
                         view => view.footspace.Value)
                     .DisposeWith(d);
 
+                #region Title
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.fonts.title.size,
+                        view => view.TitleSize.Value)
+                    .DisposeWith(d);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.fonts.title.color,
+                        view => view.TitleColor.Text)
+                    .DisposeWith(d);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.fonts.title.name,
+                        view => view.TitlePolice.Text)
+                    .DisposeWith(d);
+
+                #endregion
+
+                #region SubTitle
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.fonts.subtitle.size,
+                        view => view.SubTitleSize.Value)
+                    .DisposeWith(d);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.fonts.subtitle.color,
+                        view => view.SubTitleColor.Text)
+                    .DisposeWith(d);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.fonts.subtitle.name,
+                        view => view.SubTitlePolice.Text)
+                    .DisposeWith(d);
+
+                #endregion
+
+                #region Text
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.fonts.text.size,
+                        view => view.TextSize.Value)
+                    .DisposeWith(d);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.fonts.text.color,
+                        view => view.TextColor.Text)
+                    .DisposeWith(d);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.fonts.text.name,
+                        view => view.TextPolice.Text)
+                    .DisposeWith(d);
+
+                #endregion
+
+                #region Comment
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.fonts.comment.size,
+                        view => view.CommentSize.Value)
+                    .DisposeWith(d);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.fonts.comment.color,
+                        view => view.CommentColor.Text)
+                    .DisposeWith(d);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.fonts.comment.name,
+                        view => view.CommentPolice.Text)
+                    .DisposeWith(d);
+
+                #endregion
+
+                #region Chord
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.fonts.chord.size,
+                        view => view.ChordSize.Value)
+                    .DisposeWith(d);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.fonts.chord.color,
+                        view => view.ChordColor.Text)
+                    .DisposeWith(d);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.fonts.chord.name,
+                        view => view.ChordPolice.Text)
+                    .DisposeWith(d);
+
+                #endregion
+
+                #region Diagrams
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.diagrams.show,
+                        view => view.DiagramPosition.Text)
+                    .DisposeWith(d);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.diagrams.width,
+                        view => view.DiagramWidth.Value)
+                    .DisposeWith(d);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.diagrams.height,
+                        view => view.DiagramHeight.Value)
+                    .DisposeWith(d);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.diagrams.hspace,
+                        view => view.DiagramHSpace.Value)
+                    .DisposeWith(d);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.diagrams.vspace,
+                        view => view.DiagramVSpace.Value)
+                    .DisposeWith(d);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.ConfigurationFile.pdf.diagrams.linewidth,
+                        view => view.DiagramLineWidth.Value)
+                    .DisposeWith(d);
+
+                #endregion
+
                 #endregion
             });
 
