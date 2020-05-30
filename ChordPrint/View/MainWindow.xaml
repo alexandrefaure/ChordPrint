@@ -122,9 +122,34 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBox Name="Editor" Grid.Column="0" AcceptsReturn="True" SelectionChanged="Editor_OnSelectionChanged"
+            <!--<TextBox Name="Editor" Grid.Column="0" AcceptsReturn="True" SelectionChanged="Editor_OnSelectionChanged"
                      AcceptsTab="True" VerticalContentAlignment="Top"
-                     VerticalScrollBarVisibility="Auto" />
+                     VerticalScrollBarVisibility="Auto" />-->
+            <TextBox Name="Editor"
+                     FontFamily="Consolas"
+                     FontSize="12"
+                     Grid.Column="0" AcceptsReturn="True" SelectionChanged="Editor_OnSelectionChanged"
+                     AcceptsTab="True" VerticalContentAlignment="Top"
+                     VerticalScrollBarVisibility="Auto"
+                     TextBlock.LineHeight="20"
+                     TextBlock.LineStackingStrategy="BlockLineHeight"
+                     Padding="20,10,20,20" TextWrapping="Wrap">
+                <TextBox.Background>
+                    <DrawingBrush TileMode="Tile" Stretch="None" Viewport="0,0,20,20"
+                                  ViewportUnits="Absolute" Opacity="1">
+                        <DrawingBrush.Drawing>
+                            <GeometryDrawing>
+                                <GeometryDrawing.Pen>
+                                    <Pen Brush="RoyalBlue" Thickness=".1" />
+                                </GeometryDrawing.Pen>
+                                <GeometryDrawing.Geometry>
+                                    <LineGeometry StartPoint="0,0" EndPoint="20,0"/>
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingBrush.Drawing>
+                    </DrawingBrush>
+                </TextBox.Background>
+            </TextBox>
             <WebBrowser Grid.Column="1" Name="pdfViewer" />
         </Grid>
 
