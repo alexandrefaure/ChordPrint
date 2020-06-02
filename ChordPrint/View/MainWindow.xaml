@@ -9,6 +9,9 @@
                  BorderThickness="1"
                  mc:Ignorable="d"
                  WindowState="Maximized"
+                 Icon="../guitar.ico"
+                 ShowIconOnTitleBar="True"
+                 ShowTitleBar="True"
                  Title="ChordPro2Pdf" Height="450" Width="1200">
     <mah:MetroWindow.RightWindowCommands>
         <mah:WindowCommands>
