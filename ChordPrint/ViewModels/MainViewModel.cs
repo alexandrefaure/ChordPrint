@@ -64,7 +64,7 @@ namespace ChordPrint.ViewModels
             this.WhenAnyValue(vm => vm.SelectedDirective)
                 .Where(vm => vm != Directive.Unknown)
                 .DistinctUntilChanged()
-                .Subscribe(vm => AddDirective());
+                .Subscribe(vm => AddDirective(SelectedDirective));
 
             DirectivesList = new ObservableCollection<Directive>
             {
@@ -75,9 +75,10 @@ namespace ChordPrint.ViewModels
                 Directive.StartOfChorus,
                 Directive.EndOfChorus,
                 Directive.StartOfTab,
+                Directive.EndOfTab,
                 Directive.DefineChord,
-                Directive.Columns,
-                Directive.EndOfTab
+                Directive.AddChord,
+                Directive.Columns
             };
         }
 
@@ -114,13 +115,12 @@ namespace ChordPrint.ViewModels
 
         public GlobalContext _globalContext { get; }
 
-        private async Task AddDirective()
+        private async Task AddDirective(Directive selectedDirective)
         {
-            var selectedIs = SelectedDirective;
-            if (!string.IsNullOrEmpty(EditorText))
+            if (EditorText != null)
             {
                 var previousCaret = EditorTextCaretIndex;
-                string newDisplay = EditorText.Substring(0, EditorTextCaretIndex) + selectedIs.Value +
+                string newDisplay = EditorText.Substring(0, EditorTextCaretIndex) + selectedDirective.Value +
                                     EditorText.Substring(EditorTextCaretIndex,
                                         EditorText.Length - EditorTextCaretIndex);
                 EditorText = newDisplay;
@@ -172,7 +172,7 @@ namespace ChordPrint.ViewModels
                 fs.Close();
             }
 
-            await OpenFile(CurrentFilePath);
+            await OpenFile(CurrentFilePath, true);
         }
 
         private async Task OpenConfigFileSettings()
@@ -196,10 +196,10 @@ namespace ChordPrint.ViewModels
         private async Task AskUserAndOpenFile()
         {
             CurrentFilePath = GetFilePath();
-            await OpenFile(CurrentFilePath);
+            await OpenFile(CurrentFilePath, false);
         }
 
-        private async Task OpenFile(string filePath)
+        private async Task OpenFile(string filePath, bool isNew)
         {
             if (string.IsNullOrEmpty(filePath))
             {
@@ -207,6 +207,12 @@ namespace ChordPrint.ViewModels
             }
 
             EditorText = File.ReadAllText(filePath);
+
+            if (isNew)
+            {
+                AddDirective(Directive.SousTitre);
+                AddDirective(Directive.Titre);
+            }
 
             await ConvertFileToPdfAndPrintPdf(CurrentFilePath);
         }
@@ -229,9 +235,12 @@ namespace ChordPrint.ViewModels
 
         private async Task SaveAndConvert()
         {
-            SaveFile();
+            if (!string.IsNullOrEmpty(EditorText))
+            {
+                SaveFile();
 
-            await ConvertFileToPdfAndPrintPdf(CurrentFilePath);
+                await ConvertFileToPdfAndPrintPdf(CurrentFilePath);
+            }
         }
 
         private void SaveFile()

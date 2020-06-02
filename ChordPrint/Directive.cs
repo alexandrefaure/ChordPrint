@@ -43,17 +43,22 @@
 
         public static Directive StartOfTab
         {
-            get { return new Directive("Début refrain", "{sot}"); }
+            get { return new Directive("Début tablature", "{sot}"); }
         }
 
         public static Directive EndOfTab
         {
-            get { return new Directive("Fin refrain", "{eot}"); }
+            get { return new Directive("Fin tablature", "{eot}"); }
         }
 
         public static Directive DefineChord
         {
-            get { return new Directive("Accord", "{define: Am7 base-fret 5 frets 1 3 1 1 1 1}"); }
+            get { return new Directive("Redéfinir accord", "{define: Am7 base-fret 5 frets 1 3 1 1 1 1}"); }
+        }
+
+        public static Directive AddChord
+        {
+            get { return new Directive("Ajouter accord", "{chord: Am7 base-fret 5 frets 1 3 1 1 1 1}"); }
         }
 
         public static Directive Columns
