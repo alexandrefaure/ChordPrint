@@ -8,3 +8,5 @@
 /ChordPrintCore/bin/*
 /ChordPrintCore/obj/*
 /.vs/ChordPrint/v16/.suo
+/ChordPrintCore.Package/bin/*
+/ChordPrintCore.Package/obj/*
