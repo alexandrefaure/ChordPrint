@@ -29,7 +29,6 @@
                 <Setter Property="HorizontalAlignment" Value="Center" />
             </Style>
 
-
             <Thickness x:Key="ControlMargin">0 2 0 0</Thickness>
         </ResourceDictionary>
     </Application.Resources>
