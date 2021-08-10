@@ -62,6 +62,11 @@ namespace ChordPrint.View
                     viewModel => viewModel.SelectFileCommand,
                     view => view.OpenFileButton)
                 .DisposeWith(disposableRegistration);
+
+            this.BindCommand(ViewModel,
+                    viewModel => viewModel.ResetFileCommand,
+                    view => view.ReinitializeFileButton)
+                .DisposeWith(disposableRegistration);
         }
 
         private void SettingsView_OnLoaded(object sender, RoutedEventArgs e)

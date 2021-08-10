@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
+using ChordPrint.Services;
 using ChordPrint.Utils;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
@@ -18,6 +19,8 @@ namespace ChordPrint.ViewModels
     public interface IParentViewModel
     {
         GlobalContext _globalContext { get; }
+
+        ChordProService _chordService { get; }
     }
 
     public static class Extensions
@@ -48,6 +51,7 @@ namespace ChordPrint.ViewModels
             _globalContext = new GlobalContext();
             _messageService = new MessageService();
             _fileManager = new FileManager();
+            _chordService = new ChordProService(_configurationService);
 
             CreateFileCommand = ReactiveCommand.CreateFromTask(CreateFile);
             OpenFileCommand = ReactiveCommand.CreateFromTask(AskUserAndOpenFile);
@@ -114,6 +118,7 @@ namespace ChordPrint.ViewModels
         [Reactive] public Visibility PdfViewerVisibility { get; set; }
 
         public GlobalContext _globalContext { get; }
+        public ChordProService _chordService { get; }
 
         private async Task AddDirective(Directive selectedDirective)
         {
@@ -132,7 +137,7 @@ namespace ChordPrint.ViewModels
             ProgressBarVisibility = Visibility.Visible;
             using (FolderBrowserDialog dialog = new FolderBrowserDialog
             {
-                Description = "Sélectionner le dossier contenant les fichiers à convertir",
+                Description = "Sélectionner le dossier contenant les fichiers à convertir"
                 //UseDescriptionForTitle = true
             })
             {

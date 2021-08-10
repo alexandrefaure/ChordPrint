@@ -15,6 +15,9 @@
             <Button Name="OpenFileButton" Width="100" DockPanel.Dock="Right" Margin="5 5 5 5"
                     Content="Ouvrir"
                     Style="{DynamicResource MahApps.Styles.Button.AccentedSquare}" />
+            <Button Name="ReinitializeFileButton" Width="100" DockPanel.Dock="Right" Margin="5 5 5 5"
+                    Content="RESET"
+                    Style="{DynamicResource MahApps.Styles.Button.AccentedSquare}" />
         </DockPanel>
         <TextBox Name="ConfigFileEditor" DockPanel.Dock="Top" AcceptsReturn="True" Height="400"
                  VerticalScrollBarVisibility="Auto" />

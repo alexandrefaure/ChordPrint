@@ -124,6 +124,7 @@
     </ApplicationDefinition>
     <Compile Include="Directive.cs" />
     <Compile Include="GlobalContext.cs" />
+    <Compile Include="Services\ChordProService.cs" />
     <Compile Include="Utils\FileManager.cs" />
     <Compile Include="Utils\ConfigurationService.cs" />
     <Compile Include="Utils\IConfigurationService.cs" />
@@ -198,6 +199,7 @@
     </Content>
     <Resource Include="guitar.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.1.1\build\Fody.targets" Condition="Exists('..\packages\Fody.6.1.1\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
