@@ -25,6 +25,7 @@ jobs:
       run: dotnet test --no-build --verbosity normal
     - name: Publish
       run: dotnet publish
-    - name: Get asset
-      run: csexton/release-asset-actions@v2
-      pattern: ChordPrintCore/bin/Debug/net5.0-windows/publish/*.exe
+    - name: Upload Assets to Release with a wildcard
+      uses: csexton/release-asset-action@v2
+      with:
+       pattern: "ChordPrintCore/bin/Debug/net5.0-windows/publish/*.exe"
