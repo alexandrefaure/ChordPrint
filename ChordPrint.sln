@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChordPrintCore", "ChordPrin
 EndProject
 Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "ChordPrintCore.Package", "ChordPrintCore.Package\ChordPrintCore.Package.wapproj", "{D3CB6957-6DB0-49AF-81D2-7BEDBE3DF971}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChordPrintCore.Tests", "ChordPrintCore.Tests\ChordPrintCore.Tests.csproj", "{7176B259-B6E8-462B-A94F-F70488CD90E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChordPrintCore.Tests", "ChordPrintCore.Tests\ChordPrintCore.Tests.csproj", "{7176B259-B6E8-462B-A94F-F70488CD90E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,8 +23,8 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2BC19898-2487-4B86-851E-39AB0D123EE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2BC19898-2487-4B86-851E-39AB0D123EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BC19898-2487-4B86-851E-39AB0D123EE9}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{2BC19898-2487-4B86-851E-39AB0D123EE9}.Debug|Any CPU.Build.0 = Debug|x64
 		{2BC19898-2487-4B86-851E-39AB0D123EE9}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{2BC19898-2487-4B86-851E-39AB0D123EE9}.Debug|ARM.Build.0 = Debug|Any CPU
 		{2BC19898-2487-4B86-851E-39AB0D123EE9}.Debug|ARM64.ActiveCfg = Debug|Any CPU
@@ -43,9 +43,9 @@ Global
 		{2BC19898-2487-4B86-851E-39AB0D123EE9}.Release|x64.Build.0 = Release|Any CPU
 		{2BC19898-2487-4B86-851E-39AB0D123EE9}.Release|x86.ActiveCfg = Release|Any CPU
 		{2BC19898-2487-4B86-851E-39AB0D123EE9}.Release|x86.Build.0 = Release|Any CPU
-		{D3CB6957-6DB0-49AF-81D2-7BEDBE3DF971}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3CB6957-6DB0-49AF-81D2-7BEDBE3DF971}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D3CB6957-6DB0-49AF-81D2-7BEDBE3DF971}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D3CB6957-6DB0-49AF-81D2-7BEDBE3DF971}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{D3CB6957-6DB0-49AF-81D2-7BEDBE3DF971}.Debug|Any CPU.Build.0 = Debug|x64
+		{D3CB6957-6DB0-49AF-81D2-7BEDBE3DF971}.Debug|Any CPU.Deploy.0 = Debug|x64
 		{D3CB6957-6DB0-49AF-81D2-7BEDBE3DF971}.Debug|ARM.ActiveCfg = Debug|ARM
 		{D3CB6957-6DB0-49AF-81D2-7BEDBE3DF971}.Debug|ARM.Build.0 = Debug|ARM
 		{D3CB6957-6DB0-49AF-81D2-7BEDBE3DF971}.Debug|ARM.Deploy.0 = Debug|ARM
