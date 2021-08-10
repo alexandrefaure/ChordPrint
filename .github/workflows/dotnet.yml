@@ -29,3 +29,5 @@ jobs:
       uses: csexton/release-asset-action@v2
       with:
        pattern: "ChordPrintCore/bin/Debug/net5.0-windows/publish/*.exe"
+       github-token: ${{ secrets.GITHUB_TOKEN }}
+       release-url: ${{ steps.create_release.outputs.upload_url }}
