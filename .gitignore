@@ -10,3 +10,5 @@
 /.vs/ChordPrint/v16/.suo
 /ChordPrintCore.Package/bin/*
 /ChordPrintCore.Package/obj/*
+
+/ChordPrintCore.Tests/obj/*
