@@ -27,7 +27,7 @@ jobs:
 
     env:
       App_Packages_Directory: AppPackages
-      SigningCertificate: GitHubActionsDemo.pfx
+      SigningCertificate: ChordPrintCore.Package_TemporaryKey.pfx
       Solution_Path: ChordPrint.sln
       Test_Project_Path: ChordPrintCore.Tests\ChordPrintCore.Tests.csproj
       Wpf_Project_Path: ChordPrintCore\ChordPrintCore.csproj
