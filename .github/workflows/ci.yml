@@ -114,3 +114,4 @@ jobs:
       with:
         name: EXE File
         path: "ChordPrintCore\bin\x64\Debug\net5.0-windows\ChordPrintCore.exe"
+        
