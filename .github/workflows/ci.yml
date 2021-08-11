@@ -109,9 +109,9 @@ jobs:
         path: ${{ env.Wap_Project_Directory }}\${{ env.App_Packages_Directory }}
         
     # Upload the execution directory
-    - name: Upload EXE file
+    - name: Upload execution directory
       uses: actions/upload-artifact@v1
       with:
         name: ChordPrint
-        path: ChordPrintCore\bin\x64\Debug\net5.0-windows\*
+        path: ChordPrintCore\bin\x64\Debug\net5.0-windows\*.*
         
