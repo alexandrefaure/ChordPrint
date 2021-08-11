@@ -119,6 +119,8 @@ namespace ChordPrintCore.ViewModels
 
             Settings.Default.ConfigurationFilePath = ConfigFilePath;
 
+            Settings.Default.Save();
+
             Close();
         }
 
