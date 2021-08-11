@@ -107,3 +107,10 @@ jobs:
       with:
         name: MSIX Package
         path: ${{ env.Wap_Project_Directory }}\${{ env.App_Packages_Directory }}
+        
+    # Upload the EXE file
+    - name: Upload EXE file
+      uses: actions/upload-artifact@v1
+      with:
+        name: EXE File
+        path: "ChordPrintCore\bin\x64\Debug\net5.0-windows\ChordPrintCore.exe"
